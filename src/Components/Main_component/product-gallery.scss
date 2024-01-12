@@ -1,16 +1,32 @@
 $Orange: hsl(26, 100%, 55%);
 $Pale_orange: hsl(25, 100%, 94%);
 .product__gallery {
+  position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.product__gallery .product_gallery_main__image{
+.product__gallery .close{
+  position: absolute;
+  right: 0;
+  top: -40px;
+  cursor: pointer;
+}
+
+.product__gallery .close svg path {
+  transition: fill 0.3s;
+}
+
+.product__gallery .close svg path:hover {
+  fill: $Orange;
+}
+
+.product__gallery .product_gallery_main__image {
   position: relative;
   display: flex;
 }
 
-.product__gallery .product_gallery_main__image .btn{
+.product__gallery .product_gallery_main__image .btnSlider {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -25,22 +41,22 @@ $Pale_orange: hsl(25, 100%, 94%);
   z-index: 1;
 }
 
-.product__gallery .product_gallery_main__image .previous{
+.product__gallery .product_gallery_main__image .previous {
   left: 0;
 }
 
-.product__gallery .product_gallery_main__image .next{
+.product__gallery .product_gallery_main__image .next {
   right: 0;
 }
 
-.product__gallery .product_gallery_main__image img{
+.product__gallery .product_gallery_main__image img {
   position: absolute;
   display: block;
   width: calc(100% + 40px);
   height: 100%;
   transform: translateX(-20px);
   // width: 0px;
-  left: -1000px;
+  left: -300%;
   transition: left ease 1s;
 }
 
@@ -57,7 +73,6 @@ $Pale_orange: hsl(25, 100%, 94%);
 @media only screen and (min-width: 780px) {
   .product__gallery {
     width: 100%;
-    
 
     .product_gallery_main__image img {
       width: 100%;
@@ -81,7 +96,7 @@ $Pale_orange: hsl(25, 100%, 94%);
       transition: opacity 0.3s ease;
       z-index: 1;
     }
-    
+
     .product_gallery_thumbnails__section img.active {
       box-shadow: 0px 0px 0px 4px $Orange;
     }
