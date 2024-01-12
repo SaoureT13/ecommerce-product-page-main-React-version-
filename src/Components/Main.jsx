@@ -1,5 +1,5 @@
-import { ProductGallery } from "./Main component/product-gallerie";
-import { Section } from "./Main component/section";
+import { ProductGallery } from "./Main_component/product-gallerie";
+import { Section } from "./Main_component/section";
 import "./Main.scss";
 
 export function Main() {
