@@ -11,7 +11,7 @@ import image3 from "./Gallerie/image-product-3.jpg";
 import image4 from "./Gallerie/image-product-4.jpg";
 import { useState } from "react";
 
-export function ProductGallery({ nextRef, previousRef, onClick }) {
+export function ProductGallery({onClick, productImageRef }) {
   const gallery_mainImage = [image1, image2, image3, image4];
   const gallery_thumbailsImage = [t_img1, t_img2, t_img3, t_img4];
   const [currentImage, setCurrentImage] = useState(0);
@@ -47,7 +47,6 @@ export function ProductGallery({ nextRef, previousRef, onClick }) {
           className="previous btnSlider"
           id="mobile"
           onClick={handleClickPrev}
-          ref={previousRef}
         >
           <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -63,7 +62,6 @@ export function ProductGallery({ nextRef, previousRef, onClick }) {
           className="next btnSlider"
           id="mobile"
           onClick={handleClickNext}
-          ref={nextRef}
         >
           <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -82,6 +80,7 @@ export function ProductGallery({ nextRef, previousRef, onClick }) {
             alt={image}
             className={index === currentImage ? "active" : ""}
             onClick={onClick}
+            ref={productImageRef}
           />
         ))}
       </div>

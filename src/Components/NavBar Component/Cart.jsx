@@ -1,6 +1,8 @@
+import { AddOnCart } from "../cartProduct/cartProduct";
 import "./Cart.scss";
 
-export function Cart() {
+export function Cart({emptyRef, cartProductRef, tab}) {
+  console.log(tab)
   return (
     <div className="panier">
       <div className="cart">
@@ -13,13 +15,15 @@ export function Cart() {
       </div>
       <input type="checkbox" />
 
-      <div className="cartRecap empty">
+      <div className="cartRecap empty" ref={cartProductRef}>
         <div className="cartRecap_Title">
           <p>Cart</p>
         </div>
         <hr />
-        <div className="cart-product"></div>
-        <div className="cartRecap_Empty">
+        <div className="cart-product">
+          {/* {tab.length > 0 ? <AddOnCart tab={tab}/> : ""} */}
+        </div>
+        <div className="cartRecap_Empty" ref={emptyRef}>
           <p className="info">Your cart is empty</p>
         </div>
         <button className="cartRecap_BtnValidation">Checkout</button>

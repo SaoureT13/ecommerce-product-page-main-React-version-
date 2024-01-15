@@ -6,7 +6,7 @@ import "./NavBar.scss";
 import { useState } from "react";
 import { Cart } from "./NavBar Component/Cart.jsx";
 
-export function NavBar() {
+export function NavBar({emptyRef, cartProductRef, tab}) {
   const [activeNavBar, setActiveNavBar] = useState("");
 
   const handleClickActiveNavbar = () => {
@@ -50,7 +50,7 @@ export function NavBar() {
         </nav>
       </div>
       <div className="right user-box">
-        <Cart />
+        <Cart emptyRef={emptyRef} cartProductRef={cartProductRef} tab={tab}/>
         <div className="img-avatar">
           <img src={imageAvatar} alt="Image avatar" />
         </div>

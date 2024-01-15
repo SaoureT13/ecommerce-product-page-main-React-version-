@@ -1,5 +1,3 @@
 
 Todo: 
   ☐ Faire l'animation du carroussel du e-commerce_section 
-LightBox(2):
-  ☐ Je peux cliquer et au clique, declenché un effet de beau, c'est à dire lorsqu'on clique utiliser une classe pour afficher la lightBox, le useEffect surveille une valeur(lorsqu'elle change: alors je recupere la ref de mes element mobile et je supprime l'id mobile sur les elements)    
