@@ -24,7 +24,28 @@ $Pale_orange: hsl(25, 100%, 94%);
   z-index: 1;
 }
 .panier .cart {
+  position: relative;
   cursor: pointer;
+}
+
+.cart p{
+  display: inline-block;
+  content: " ";
+  position: absolute;
+  width: 20px;
+  height: 15px;
+  background-color: $Orange;
+  border-radius: 10px;
+  text-align: center;
+  color: $White;
+  font-weight: bold;
+  font-size: 10px;
+  top: -10px;
+  right: -10px;
+}
+
+.panier .cart:hover svg path {
+  fill: $Black;
 }
 .panier {
   position: relative;

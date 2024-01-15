@@ -20,6 +20,7 @@ function App() {
   const cartProductRef = useRef();
   const [showLightBox, setShowLightBox] = useState("");
   const [cart, setCart] = useState([]);
+  const [totalQuantity, setTotalQuantity] = useState(0);
 
   // const [currentProductName, setCurrentProductName] = useState("");
   // const [currentProductPrice, setCurrentProductPrice] = useState("");
@@ -35,7 +36,7 @@ function App() {
   };
 
   const decrementQty = () => {
-    setValue((v) => (v >= 0 ? v - 1 : 0));
+    setValue((v) => (v > 0 ? v - 1 : 0));
   };
 
   const handleShowLightBox = () => {
@@ -83,8 +84,25 @@ function App() {
         };
 
         setCart([product]);
+        cartProductRef.current.classList.remove("empty");
         // console.log(cart);
       }
+    }
+  };
+
+  const handleDeleteProduct = (e) => {
+    let parent = e.target.parentNode;
+    let parentId = parent.getAttribute("id");
+
+    function filterCartItems(obj) {
+      return obj == parentId ? true : false;
+    }
+
+    if (cart.length > 1) {
+      setCart(cart.filter(filterCartItems));
+    } else {
+      setCart([]);
+      cartProductRef.current.classList.add("empty");
     }
   };
 
@@ -92,9 +110,24 @@ function App() {
     console.log(cart);
   }, [cart]);
 
+  useEffect(() => {
+    const newTotalQuantity = cart.reduce(
+      (total, product) => total + product.quantity,
+      0
+    );
+    setTotalQuantity(newTotalQuantity);
+  }, [cart]);
+
   return (
     <div className="container">
-      <NavBar emptyRef={divEmptyRef} cartProductRef={cartProductRef} tab={cart}/>
+      <NavBar
+        emptyRef={divEmptyRef}
+        cartProductRef={cartProductRef}
+        tab={cart}
+        Qty={totalQuantity}
+        //Delete product in cart
+        handleDeleteProduct={handleDeleteProduct}
+      />
       <Main
         handleShowLightBox={handleShowLightBox}
         productNameRef={productNameRef}
